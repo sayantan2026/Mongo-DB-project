@@ -93,6 +93,22 @@ erDiagram
         string COD_BRANCH PK
         string NUM_CONTRACT
     }
+
+    TCDV0800 {
+        string COD_ENTITY PK
+        string COD_FCC PK "Currency Code"
+        decimal EXCHUNIT1 "Unit"
+    }
+
+    TCDV0811 {
+        string COD_ENTITY PK
+        string COD_FCC PK
+        date DAT_EXCHANGE PK
+        decimal BIDRATE
+        decimal OFFERRATE
+    }
+
+    TCDV0800 ||--|{ TCDV0811 : "Has Rates"
 ```
 
 ## 4. Table Dictionary
@@ -106,3 +122,5 @@ erDiagram
 | **BGDT016** | **Commissions** | Parameters for calculation of commissions. |
 | **TCDV0200** | **Holidays** | General calendar of holidays by City/Region. |
 | **TCDV0220** | **Holiday Exceptions** | Branch-specific overrides to the general holiday calendar. |
+| **TCDV0800** | **Currency Codes** | Defines currencies and their properties (Master table). |
+| **TCDV0811** | **Exchange Rates** | Child of `TCDV0800`. Stores historical exchange rates. |
