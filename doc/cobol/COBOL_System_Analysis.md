@@ -54,6 +54,16 @@ erDiagram
         decimal T033_PER_INCAPP "Interest Rate"
     }
 
+    BGDT100 {
+        string T100_ENT PK
+        string T100_CEN_REG PK
+        string T100_ACC PK
+        string T100_TXT_LDGTIT1 "Short Name"
+        string T100_TXT_LDGTIT2 "Statement Name"
+    }
+
+    BGDT041 ||--|| BGDT100 : "Has Titles"
+
     BGDT003 {
         string T003_ENT PK
         string T003_CEN_REG PK
@@ -116,6 +126,7 @@ erDiagram
 | :--- | :--- | :--- |
 | **TCDV0500** | **Branch / Center Table** | Master table for Branches. |
 | **BGDT041** | **Master Table of Accounts** | Links to `TCDV0500` via Entity/Branch. Parent of all product tables. |
+| **BGDT100** | **Account Titles/Headings** | Extension of `BGDT041`. Stores account names (Short Name, Statement Name). |
 | **BGDT033** | **Term Deposits** | Child of `BGDT041`. Contains specific Term Deposit details (Interest, Renewal). |
 | **BGDT003** | **Opening Request** | Stores requests to open new accounts/products. |
 | **BGDT077** | **Pre-notifications** | Tracks withdrawal pre-notifications for accounts. |
